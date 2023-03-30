@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* variables Use if you want*/
+:root {
+  --ff-heading: 'Epilogue', sans-serif;
+  --ff-texting: 'Open sans', sans-serif;
+
+  
+  /*HSLA = Hue Saturation Luminance Alpha
+  Hue = color 
+  Saturation 
+  Luminance = Color Illumination
+  Alpha = Opacity*/
+
+  --hue: 250;
+  --fc-primary: hsla(var(--hue),0%, 100%, 1);
+  --fc-secondary: hsla(var(--hue), 50%, 80%, 1);
+  --fc-secondary-dark: hsla(var(--hue), 100%, 11%, 1);
+
+  --bg-primary: hsla(var(--hue), 22%, 20%, 1);
+
+  font-size: 62.5%;
+
+  --fs-body: 1.6rem;
+  --fs-heading: clamp(4rem, 1rem + 5vw, 5.6rem);
+  --fs-heading-sm: clamp(3rem, 0.5rem + 3vw, 4rem);
+
+}
+
+body {
+  font-family: var(--ff-texting);
+  color: var(--fc-primary);
+
+  background-color: var(--bg-primary);
+
+  font-size: var(--fs-body);
+}
+
+.page {
+  max-width: clamp(33rem, 30rem + 60vw, 117rem);
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
+
+main {
+  display: grid;
+  gap: 3.2rem;
+
+  animation: downtop 700ms 350ms backwards;
+}
+
+img {
+  width: 100%;
+  height: auto;
+
+  border-radius: 6px;
+
+  transition: all 500ms;
+  
+}
+
+img:hover {
+  transform: scale(1.1);
+  opacity: 0.3;
+  
+}
+
+header {
+  margin: 10.6rem 0 8rem;
+
+  font-family: var(--ff-heading);
+
+  text-align: center;
+
+  animation: topdown 700ms;
+}
+
+header p {
+  color: var(--fc-secondary);
+
+  font-weight: 400;
+  line-height: 3.2rem;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  margin-bottom: 1.7rem;
+}
+
+header h1 {
+  font-size: var(--fs-heading);
+  line-height: 4.8rem;
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+}
+
+.cards {
+  position: relative;
+
+  font-family: var(--ff-heading);
+
+
+}
+
+.cards img {
+  height: 41.6rem;
+  object-fit: cover;
+
+  filter: brightness(0.5) saturate(1.5);
+  
+}
+
+.cards h2 {
+  position: absolute;
+
+  bottom: 5.2rem;
+  left: 2.8rem;
+
+  font-size: var(--fs-heading-sm);
+  font-weight: 800;
+  line-height: 4.8rem;
+
+  color: var(--fc-primary);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+
+}
+
+.cards h2 span {
+  border-radius: 2rem;
+  background-color: var(--fc-primary);
+
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 3.2rem;
+  color: var(--fc-secondary-dark);
+
+  padding: 0 1.6rem;
+
+  display: inline-flex;
+  align-items: center;
+  height: 3.8rem;
+
+  width: fit-content;
+}
+
+/*animations*/
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*adaptation to desktop*/
+@media (min-width: 700px) {
+  
+  /*.page {
+    max-width: 170rem;
+
+    padding: 0 5rem;
+  }*/
+
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 930px) {
+
+  main {
+    grid-template-areas: 
+    "colA colB colB"
+    "colC colC colD";
+  }
+
+  main div:nth-child(1) {
+    grid-area: colA;
+  }
+
+  main div:nth-child(2) {
+    grid-area: colB;
+  }
+
+  main div:nth-child(3) {
+    grid-area: colC;
+  }
+
+  main div:nth-child(4) {
+    grid-area: colD;
+  }
+
+}
